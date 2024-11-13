@@ -1,39 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>KMP Algorithm Visualization</title>
+    <title>KMP 알고리즘 시각화</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h2>KMP 알고리즘 시각화</h2>
+        <h1>KMP 알고리즘 시각화</h1>
+        
         <div class="controls">
-            <input type="text" id="text" placeholder="텍스트 입력" value="ABABDABACDABABCABAB">
-            <input type="text" id="pattern" placeholder="패턴 입력" value="ABABCABAB">
-            <br><br>
-            <button onclick="startKMP()" id="startBtn">시작</button>
-            <button onclick="nextStep()" id="nextBtn" disabled>다음 단계</button>
-            <button onclick="reset()" id="resetBtn" disabled>초기화</button>
+            <input type="text" id="text" placeholder="텍스트 입력">
+            <input type="text" id="pattern" placeholder="패턴 입력">
+            <button id="startBtn" onclick="startKMP()">시작</button>
+            <button id="nextBtn" onclick="nextStep()" disabled>다음 단계</button>
+            <button id="resetBtn" onclick="reset()" disabled>초기화</button>
         </div>
-        <div id="lpsSection">
-            <h3>실패 함수 (LPS 배열) 계산 과정</h3>
-            <table class="lps-table" id="lpsTable">
-                <tr id="patternRow">
-                    <th>인덱스</th>
-                </tr>
-                <tr id="indexRow">
-                    <th>패턴</th>
-                </tr>
-                <tr id="lpsRow">
-                    <th>LPS</th>
-                </tr>
-            </table>
-            <div id="lpsInfo" class="step-info"></div>
-        </div>
+
+        <div id="info"></div>
+        <div id="stepInfo" class="step-info"></div>
+
         <div id="textDisplay"></div>
         <div id="patternDisplay"></div>
-        <div id="info"></div>
-        <div class="step-info" id="stepInfo"></div>
+
+        <div class="lps-section">
+            <h2>실패 함수 (LPS 배열) 계산 과정</h2>
+            
+            <div class="pattern-growth-container">
+                <div class="pattern-slider" id="patternSlider"></div>
+            </div>
+
+            <div class="prefix-suffix-visualization">
+                <div class="current-pattern" id="currentPattern"></div>
+                <div class="matching-status" id="matchingStatus"></div>
+            </div>
+
+            <table class="lps-table">
+                <tr id="patternRow"><th>인덱스</th></tr>
+                <tr id="indexRow"><th>패턴</th></tr>
+                <tr id="lpsRow"><th>LPS</th></tr>
+            </table>
+            
+            <div id="lpsInfo" class="lps-step-explanation"></div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
